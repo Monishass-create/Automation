@@ -1,19 +1,23 @@
-package autosuggestions;
+package headless;
 
 import java.time.Duration;
-import java.util.Iterator;
 import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
-public class Flipkart
+public class Flipkart 
 {
 	public static void main(String[] args)
 	{
-		WebDriver driver=new ChromeDriver();
+		ChromeOptions opt=new ChromeOptions();
+		opt.addArguments("--headless");
+		
+	
+		WebDriver driver=new ChromeDriver(opt);
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		
@@ -29,9 +33,7 @@ public class Flipkart
 		for (WebElement web: ele) 
 		{
 			System.out.println(web.getText());
-			
 		}
-		
 	}
 
 }
